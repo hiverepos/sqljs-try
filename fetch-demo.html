@@ -1,0 +1,32 @@
+<meta charset="utf8" />
+<html>
+  <script src="/sql-wasm.js"></script>
+  <script>
+    const loadDB = async () => {
+      const sqlPromise = initSqlJs({
+        locateFile: (file) => `${file}`,
+      });
+      const dataPromise = fetch(
+        "https://cdn.jsdelivr.net/gh/abdelmomen1985/vite-ts-tailwind-starter@master/testing.sqlite?raw=true"
+      ).then((res) => res.arrayBuffer());
+      const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
+      const db = new SQL.Database(new Uint8Array(buf));
+
+      // Prepare a statement
+      const stmt = db.prepare("SELECT * FROM user");
+      stmt.getAsObject({ $start: 1, $end: 1 });
+
+      // Bind new values
+      stmt.bind({ $start: 1, $end: 2 });
+      while (stmt.step()) {
+        //
+        const row = stmt.getAsObject();
+        console.log("Here is a row: " + JSON.stringify(row));
+      }
+    };
+    loadDB();
+  </script>
+  <body>
+    Output is in Javascript console
+  </body>
+</html>

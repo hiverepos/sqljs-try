@@ -1,0 +1,1 @@
+SELECT *, json_extract(body, '$.name') as json_name FROM SupportsJSON where json_name like '%SHA%';
