@@ -12,5 +12,5 @@ initSqlJs().then(function (SQL: any) {
 
   var data = db.export();
   var buffer = Buffer.from(data);
-  fs.writeFileSync("demo.sqlite", buffer);
+  fs.writeFileSync("demo.db", buffer);
 });

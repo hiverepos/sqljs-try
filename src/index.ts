@@ -21,6 +21,6 @@ createConnection()
     const data = connection.sqljsManager.exportDatabase();
 
     const buffer = Buffer.from(data);
-    fs.writeFileSync("testing.sqlite", buffer);
+    fs.writeFileSync("demo.db", buffer);
   })
   .catch((error) => console.log(error));

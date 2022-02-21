@@ -3,7 +3,7 @@ import { Photo } from "./entity/Photo";
 
 const options: ConnectionOptions = {
   type: "sqljs",
-  location: "testing.sqlite",
+  location: "demo.db",
   entities: [Photo],
   logging: true,
 };
