@@ -7,7 +7,7 @@
         locateFile: (file) => `${file}`,
       });
       const dataPromise = fetch(
-        "https://cdn.jsdelivr.net/gh/hiverepos/sqljs-try/demo.db?raw=true"
+        "https://cdn.jsdelivr.net/gh/abdelmomen1985/vite-ts-tailwind-starter/demo.db?raw=true"
       ).then((res) => res.arrayBuffer());
       const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
       const db = new SQL.Database(new Uint8Array(buf));
